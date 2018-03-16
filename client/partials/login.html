@@ -1,0 +1,47 @@
+<div ng-controller="authController">
+    <br>
+    <br>
+    <br>
+
+    <div id="login-form-wrapper" layout="column" layout-align="center center">
+
+        <flash-message name="login"></flash-message>
+
+        <div id="login-form" style="width:300px; padding:20px;" class="md-whiteframe-8dp">
+            <form name="loginForm" novalidate>
+                <div layout="column" layout-align="center center">
+                    <h2>Strayer DialogFlow</h2>
+                    <h3>Sign In</h3>
+                </div>
+                <br>
+                <md-input-container class="md-block" md-no-float>
+                    <input type="text" name="email" ng-model="user.email" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required>
+                    <div ng-messages="loginForm.email.$error">
+                        <div ng-message="required">User's Email field is required.</div>
+                        <div ng-message="pattern">That doesn't look like a valid email format..</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="password" ng-model="user.password" placeholder="Password" required>
+                    <div ng-messages="loginForm.password.$error" role="alert">
+                        <div ng-message="required">
+                            <span>Password field is required</span>
+                        </div>
+                    </div>
+                </md-input-container>
+                <br>
+                <div layout="row" layout-align="center center">
+                    <md-button type="submit" ng-click="login()" class="md-raised md-primary submit-button" aria-label="LOG IN"
+                               ng-disabled="loginForm.$invalid || loginForm.$pristine">
+                        Sign In
+                    </md-button>
+                    <md-button type="submit" ng-click="redirectRegistration()" class="md-raised md-warn submit-button" aria-label="Registration">
+                        Registration
+                    </md-button>
+                </div>
+                <br>
+            </form>
+        </div>
+    </div>
+</div>

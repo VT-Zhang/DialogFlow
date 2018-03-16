@@ -1,0 +1,67 @@
+<div ng-controller="authController">
+    <br>
+    <br>
+    <br>
+    <h1 ng-show="flag" style="color:red;">{{message}}</h1>
+    <div id="login-form-wrapper" layout="column" layout-align="center center">
+
+        <flash-message name="registration"></flash-message>
+
+        <div id="login-form" style="width:300px; padding:20px;" class="md-whiteframe-8dp">
+            <form name="registrationForm" novalidate>
+                <div layout="column" layout-align="center center">
+                    <h2>Strayer DialogFlow</h2>
+                    <h3>Create New Account</h3>
+                </div>
+                <br>
+                <md-input-container class="md-block" md-no-float>
+                    <input type="text" name="firstName" ng-model="newUser.first_name" placeholder="First Name" required>
+                    <div ng-messages="registrationForm.firstName.$error">
+                        <div ng-message="required">First name is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input type="text" name="lastName" ng-model="newUser.last_name" placeholder="Last Name" required>
+                    <div ng-messages="registrationForm.lastName.$error">
+                        <div ng-message="required">Last name is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input type="text" name="email" ng-model="newUser.email" placeholder="Email"
+                           ng-pattern="/^.+@.+\..+$/" ng-minlength="8" required>
+                    <div ng-messages="registrationForm.email.$error">
+                        <div ng-message="required">Email is required.</div>
+                        <div ng-message="minlength">The password should be at least 8 characters.</div>
+                        <div ng-message="pattern">That doesn't look like a valid email format..</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="password" ng-model="newUser.password" placeholder="Password" required>
+                    <div ng-messages="registrationForm.password.$error">
+                        <div ng-message="required">Password field is required.</div>
+                    </div>
+
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="confirm" ng-model="newUser.password_confirm" placeholder="Confirm Password"
+                           ng-pattern="{{newUser.password}}" required>
+                    <div ng-messages="registrationForm.confirm.$error">
+                        <div ng-message="required">Please enter the password one more time.</div>
+                        <div ng-message="pattern">Passwords don't match.</div>
+                    </div>
+                </md-input-container>
+                <br>
+                <div layout="row" layout-align="center center">
+                    <md-button type="submit" ng-click="register()" class="md-raised md-primary submit-button" aria-label="Register"
+                               ng-disabled="registrationForm.$invalid || registrationForm.$pristine">
+                        Register
+                    </md-button>
+                    <md-button type="submit" ng-click="redirectLogin()" class="md-raised md-warn submit-button" aria-label="LOG IN">
+                        Go Back
+                    </md-button>
+                </div>
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
