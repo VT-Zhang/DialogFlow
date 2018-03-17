@@ -18,10 +18,8 @@ app.controller('authController', ['$scope', '$rootScope','authFactory', '$locati
                     $location.url('/');
                 }
                 else {
-                    $scope.flag = false;
-                    $cookies.put('user_id', data._id);
-                    $cookies.put('user_name', data.first_name);
-                    $location.url('/main');
+                    $location.url('/');
+                    Flash.create('success', "User account created, now you may login using your credentials.", 5000, {container: 'login'});
                 }
             });
         };

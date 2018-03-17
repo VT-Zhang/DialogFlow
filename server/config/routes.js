@@ -9,7 +9,11 @@ module.exports = function(app){
     app.post('/register', function(req, res) {
         users.register(req, res);
     });
+    app.get('/dialog', function(req, res) {
+        dialogs.index(req, res);
+    });
     app.post('/dialog', function(req, res) {
         dialogs.create(req, res);
     });
+
 };

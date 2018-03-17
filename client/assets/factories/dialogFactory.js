@@ -14,6 +14,18 @@ app.factory('dialogFactory', ['$http', function ($http) {
             });
     };
 
+    factory.showAll = function (callback) {
+        $http.get('/dialog')
+            .then(function (returned_data) {
+                if (typeof(callback) === 'function') {
+                    console.log(returned_data);
+                    callback(returned_data);
+                }
+            })
+            .catch(function (err) {
+                console.log(err)
+            });
+    };
 
     return factory;
 }]);

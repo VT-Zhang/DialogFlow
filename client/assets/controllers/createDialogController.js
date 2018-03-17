@@ -31,6 +31,4 @@ app.controller('createDialogController', ['$scope', '$rootScope','dialogFactory'
             });
         }
 
-
-
     }]);
