@@ -16,7 +16,8 @@ module.exports = {
     },
 
     show: function (req, res) {
-        Dialog.findById(req.param.id, function(err, dialog) {
+        console.log(req.params);
+        Dialog.findById(req.params.id, function(err, dialog) {
             if (err) {
                 console.log(err);
                 res.json(err);
@@ -46,7 +47,13 @@ module.exports = {
                 res.json(err);
             }
             else {
-                dialog = req.body;
+                dialog.title = req.body.title;
+                dialog.subtitle = req.body.subtitle;
+                dialog.formattedText = req.body.formattedText;
+                dialog.image.imageUrl = req.body.image.imageUrl;
+                dialog.buttons[0].title = req.body.buttons[0].title;
+                dialog.buttons[0].openUriAction.uri =
+                    req.body.buttons[0].openUriAction.uri;
                 dialog.save(function (err, result) {
                     if (err) {
                         console.log(err);

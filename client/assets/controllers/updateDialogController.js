@@ -1,8 +1,13 @@
-app.controller('updateDialogController', ['$scope', '$rootScope','dialogFactory', '$location', 'Flash', '$mdDialog', '$route',
-    function ($scope, $rootScope, dialogFactory, $location, Flash, $mdDialog, $route) {
+app.controller('updateDialogController', ['$scope', '$rootScope','dialogFactory', '$location', 'Flash', '$mdDialog', '$route', 'dialogID',
+    function ($scope, $rootScope, dialogFactory, $location, Flash, $mdDialog, $route, dialogID) {
+
+        console.log(dialogID);
 
         function init () {
-
+            dialogFactory.show(dialogID, function (data) {
+                console.log(data);
+                $scope.selectedDialog = data.data;
+            });
         }
 
         init();
@@ -11,11 +16,11 @@ app.controller('updateDialogController', ['$scope', '$rootScope','dialogFactory'
             $mdDialog.hide();
         };
 
-        $scope.create = function () {
-            dialogFactory.create($scope.newDialog, function (data) {
+        $scope.update = function () {
+            dialogFactory.update(dialogID, $scope.selectedDialog, function (data) {
                 console.log(data);
                 if (data.status === 200) {
-                    Flash.create('success', "New instance created.", 5000, {container: 'main'});
+                    Flash.create('success', "Record updated successfully.", 5000, {container: 'main'});
                     $mdDialog.hide();
                     $route.reload();
                 }
