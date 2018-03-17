@@ -12,8 +12,11 @@ module.exports = function(app){
     app.get('/dialog', function(req, res) {
         dialogs.index(req, res);
     });
-    app.post('/dialog', function(req, res) {
+    app.post('/dialog/', function(req, res) {
         dialogs.create(req, res);
+    });
+    app.delete('/dialog/:id', function(req, res) {
+        dialogs.delete(req, res);
     });
 
 };

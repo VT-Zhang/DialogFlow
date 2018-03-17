@@ -36,8 +36,9 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
             .multiple(true);
 
             $mdDialog.show(confirm).then(function () {
-                dialogFactory.delete(id);
-                $mdDialog.hide();
+                dialogFactory.delete(id, function (data) {
+                    console.log(data);
+                });
                 $route.reload();
             });
         };

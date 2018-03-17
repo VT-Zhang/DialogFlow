@@ -28,8 +28,19 @@ module.exports = {
     },
 
     delete: function (req, res) {
-        Dialog.findOne()
+        console.log(req.params);
+        console.log(req.params.id);
+        Dialog.findByIdAndRemove(req.params.id, function(err, dialog){
+            if (err) {
+                console.log(err);
+                res.json(err);
+            }
+            else {
+                res.json(dialog);
+            }
+        });
     }
+
 
 
 

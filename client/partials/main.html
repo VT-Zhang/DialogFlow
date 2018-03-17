@@ -38,7 +38,7 @@
                     <td>{{dialog.image.imageUrl}}</td>
                     <td>{{dialog.buttons[0].title}}</td>
                     <td>{{dialog.buttons[0].openUriAction.uri}}</td>
-                    <td>
+                    <td> {{dialog._id}}
                         <md-button type="submit" ng-click="updateDialog($event, dialog._id)" class="md-raised md-primary" aria-label="Update">
                             Update
                         </md-button>
