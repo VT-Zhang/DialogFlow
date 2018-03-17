@@ -1,5 +1,7 @@
 /**
  * Author: Jian Zhang
+ * Email: jianz@vt.edu
+ * Description: Strayer University Coding Challenge Project
  * Version: 1.0
  * Date: 03/16/2018
  */
