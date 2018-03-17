@@ -1,16 +1,16 @@
 app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies',
-    '$mdDialog', 'Flash', '$document', 'dialogFactory', '$route',
+    '$mdDialog', 'Flash', '$document', 'cardFactory', '$route',
     function ($scope, $rootScope, $location, $cookies, $mdDialog, Flash, $document,
-              dialogFactory, $route) {
+              cardFactory, $route) {
 
         function init() {
             if (!$cookies.get("user_id")) {
                 $location.url("/");
                 Flash.create("danger", "You have not sign in yet, please sign in first.", 5000, {container: "login"});
             }
-            dialogFactory.showAll(function (data) {
+            cardFactory.showAll(function (data) {
                 console.log(data);
-                $scope.dialogs = data.data;
+                $scope.cards = data.data;
             });
         }
 
@@ -22,13 +22,13 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
                 $cookies.remove(k);
             });
             $location.url('/');
-            Flash.create('success', "You have successfully logged out.", 10000, {container: 'login'});
+            Flash.create('success', "You have successfully logged out.", 5000, {container: 'login'});
         };
 
         $scope.deleteDialog = function (ev, id) {
             var confirm = $mdDialog.confirm()
                 .title('Are you sure want to delete this instance?')
-                .htmlContent('The instance will be deleted permanently.')
+                .htmlContent('The card instance will be deleted permanently.')
                 .ariaLabel('delete instance')
                 .targetEvent(ev)
                 .ok('YES, DELETE')
@@ -36,16 +36,17 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
                 .multiple(true);
 
             $mdDialog.show(confirm).then(function () {
-                dialogFactory.delete(id, function (data) {
+                cardFactory.delete(id, function (data) {
                     console.log(data);
                 });
+                Flash.create('success', "Card record deleted.", 5000, {container: 'login'});
                 $route.reload();
             });
         };
 
         $scope.createDialog = function (ev) {
             $mdDialog.show({
-                controller: 'createDialogController',
+                controller: 'createCardController',
                 templateUrl: 'partials/createDialog.html',
                 parent: angular.element($document.body),
                 targetEvent: ev,
@@ -55,13 +56,13 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
 
         $scope.updateDialog = function (ev, id) {
             $mdDialog.show({
-                controller: 'updateDialogController',
+                controller: 'updateCardController',
                 templateUrl: 'partials/updateDialog.html',
                 parent: angular.element($document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
                 locals: {
-                    dialogID: id
+                    cardID: id
                 }
             });
         }

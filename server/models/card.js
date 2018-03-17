@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var DialogSchema = new Schema({
+var CardSchema = new Schema({
     title: String,
     subtitle: String,
     formattedText: String,
@@ -18,4 +18,4 @@ var DialogSchema = new Schema({
     ]
 });
 
-mongoose.model("Dialog", DialogSchema);
+mongoose.model("Card", CardSchema);

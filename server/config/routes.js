@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var users = require("./../controllers/users.js");
-var dialogs = require("./../controllers/dialogs.js");
+var cards = require("./../controllers/cards.js");
 
 module.exports = function (app) {
     app.post('/login', function (req, res) {
@@ -9,20 +9,20 @@ module.exports = function (app) {
     app.post('/register', function (req, res) {
         users.register(req, res);
     });
-    app.get('/dialog', function (req, res) {
-        dialogs.index(req, res);
+    app.get('/card', function (req, res) {
+        cards.index(req, res);
     });
-    app.get('/dialog/:id', function (req, res) {
-        dialogs.show(req, res);
+    app.get('/card/:id', function (req, res) {
+        cards.show(req, res);
     });
-    app.post('/dialog/', function (req, res) {
-        dialogs.create(req, res);
+    app.post('/card/', function (req, res) {
+        cards.create(req, res);
     });
-    app.put('/dialog/:id', function (req, res) {
-        dialogs.update(req, res);
+    app.put('/card/:id', function (req, res) {
+        cards.update(req, res);
     });
-    app.delete('/dialog/:id', function (req, res) {
-        dialogs.delete(req, res);
+    app.delete('/card/:id', function (req, res) {
+        cards.delete(req, res);
     });
 
 };

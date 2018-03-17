@@ -1,8 +1,8 @@
-app.factory('dialogFactory', ['$http', function ($http) {
+app.factory('cardFactory', ['$http', function ($http) {
     var factory = {};
 
     factory.showAll = function (callback) {
-        $http.get('/dialog')
+        $http.get('/card')
             .then(function (returned_data) {
                 if (typeof(callback) === 'function') {
                     console.log(returned_data);
@@ -15,7 +15,7 @@ app.factory('dialogFactory', ['$http', function ($http) {
     };
 
     factory.show = function (id, callback) {
-        $http.get('/dialog/' + id)
+        $http.get('/card/' + id)
             .then(function (returned_data) {
                 if (typeof(callback) === 'function') {
                     callback(returned_data);
@@ -27,7 +27,7 @@ app.factory('dialogFactory', ['$http', function ($http) {
     };
 
     factory.create = function (newDialog, callback) {
-        $http.post('/dialog', newDialog)
+        $http.post('/card', newDialog)
             .then(function (returned_data) {
                 if (typeof(callback) === 'function') {
                     console.log(returned_data);
@@ -40,7 +40,7 @@ app.factory('dialogFactory', ['$http', function ($http) {
     };
 
     factory.update = function (id, updatedDialog, callback) {
-        $http.put('/dialog/' + id, updatedDialog)
+        $http.put('/card/' + id, updatedDialog)
             .then(function (returned_data) {
                 if (typeof(callback) === 'function') {
                     console.log(returned_data);
@@ -53,7 +53,7 @@ app.factory('dialogFactory', ['$http', function ($http) {
     };
 
     factory.delete = function (id, callback) {
-        $http.delete('/dialog/' + id)
+        $http.delete('/card/' + id)
             .then(function (returned_data) {
                 if (typeof(callback) === 'function') {
                     callback(returned_data);

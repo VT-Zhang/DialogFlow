@@ -30,18 +30,18 @@
                     <th width="20%">Action</th>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="dialog in dialogs">
-                        <td>{{dialog.title}}</td>
-                        <td>{{dialog.subtitle}}</td>
-                        <td>{{dialog.formattedText}}</td>
-                        <td>{{dialog.image.imageUrl}}</td>
-                        <td>{{dialog.buttons[0].title}}</td>
-                        <td>{{dialog.buttons[0].openUriAction.uri}}</td>
+                    <tr ng-repeat="card in cards">
+                        <td>{{card.title}}</td>
+                        <td>{{card.subtitle}}</td>
+                        <td>{{card.formattedText}}</td>
+                        <td>{{card.image.imageUrl}}</td>
+                        <td>{{card.buttons[0].title}}</td>
+                        <td>{{card.buttons[0].openUriAction.uri}}</td>
                         <td>
-                            <md-button type="submit" ng-click="updateDialog($event, dialog._id)" class="md-raised md-primary" aria-label="Update">
+                            <md-button type="submit" ng-click="updateDialog($event, card._id)" class="md-raised md-primary" aria-label="Update">
                                 Update
                             </md-button>
-                            <md-button type="submit" ng-click="deleteDialog($event, dialog._id)" class="md-raised md-accent" aria-label="Delete">
+                            <md-button type="submit" ng-click="deleteDialog($event, card._id)" class="md-raised md-accent" aria-label="Delete">
                                 Delete
                             </md-button>
                         </td>

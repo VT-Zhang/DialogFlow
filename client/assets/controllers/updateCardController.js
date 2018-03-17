@@ -1,10 +1,10 @@
-app.controller('updateDialogController', ['$scope', '$rootScope','dialogFactory', '$location',
-    'Flash', '$mdDialog', '$route', 'dialogID',
-    function ($scope, $rootScope, dialogFactory, $location, Flash, $mdDialog, $route, dialogID) {
+app.controller('updateCardController', ['$scope', '$rootScope','cardFactory', '$location',
+    'Flash', '$mdDialog', '$route', 'cardID',
+    function ($scope, $rootScope, cardFactory, $location, Flash, $mdDialog, $route, cardID) {
 
         function init () {
-            dialogFactory.show(dialogID, function (data) {
-                $scope.selectedDialog = data.data;
+            cardFactory.show(cardID, function (data) {
+                $scope.selectedCard = data.data;
             });
         }
 
@@ -15,7 +15,7 @@ app.controller('updateDialogController', ['$scope', '$rootScope','dialogFactory'
         };
 
         $scope.update = function () {
-            dialogFactory.update(dialogID, $scope.selectedDialog, function (data) {
+            cardFactory.update(cardID, $scope.selectedCard, function (data) {
                 if (data.status === 200) {
                     Flash.create('success', "Record updated successfully.", 5000, {container: 'main'});
                     $mdDialog.hide();
@@ -27,7 +27,7 @@ app.controller('updateDialogController', ['$scope', '$rootScope','dialogFactory'
         $scope.downloadAsFile = function() {
             var a = document.createElement("a");
             document.body.appendChild(a);
-            var file = new Blob([angular.toJson($scope.selectedDialog, true)], {type: 'text/plain'});
+            var file = new Blob([angular.toJson($scope.selectedCard, true)], {type: 'text/plain'});
             a.href = URL.createObjectURL(file);
             a.download = "json.txt";
             a.click();
