@@ -11,7 +11,7 @@ app.factory('authFactory', ['$http', function ($http) {
         .catch(function (err) {
             console.log(err)
         });
-    }
+    };
 
     factory.login = function (user, callback) {
         $http.post('/login', user)
@@ -22,7 +22,7 @@ app.factory('authFactory', ['$http', function ($http) {
         }).catch(function (err) {
             console.log(err)
         });
-    }
+    };
 
     return factory;
 }]);

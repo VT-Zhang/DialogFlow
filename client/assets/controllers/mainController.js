@@ -36,7 +36,6 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
                         "uri": "https://jackwelch.strayer.edu/about"
                     }
                 }]
-
             },
             {
                 "_id": 2,
@@ -54,7 +53,6 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
                         "uri": "https://jackwelch.strayer.edu/about"
                     }
                 }]
-
             }
         ];
 

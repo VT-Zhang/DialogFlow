@@ -1,1 +1,84 @@
-here.
+<md-dialog  aria-label="Create New Client" flex="60">
+    <!-- HEADER -->
+    <md-toolbar class="md-primary">
+        <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+            <span class="title">Create New Instance</span>
+            <md-button class="md-icon-button" ng-click="closeDialog()" aria-label="Close dialog">
+                <md-icon md-font-icon="icon-close"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <!-- HEADER -->
+
+    <!-- CONTENT -->
+    <md-dialog-content>
+        <div class="form-wrapper" flex="100">
+            <form name="createDialogForm" novalidate>
+                <div layout="row">
+                    <md-input-container flex="50">
+                        <label>Title</label>
+                        <input ng-model="newDialog.title" name="title" required>
+                        <div ng-messages="createDialogForm.title.$error">
+                            <div ng-message="required">Title is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex="50">
+                        <label>Subtitle</label>
+                        <input ng-model="newDialog.subtitle" name="subtitle" required>
+                        <div ng-messages="createDialogForm.subtitle.$error">
+                            <div ng-message="required">Subtitle is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+                <div layout="row">
+                    <md-input-container flex="100">
+                        <label>Image Url</label>
+                        <input ng-model="newDialog.image.imageUri" name="imageUri" required>
+                        <div ng-messages="createDialogForm.imageUri.$error">
+                            <div ng-message="required">Image Url is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+                <div layout="row">
+                    <md-input-container class="md-block" flex="100">
+                        <textarea ng-model="newDialog.formattedText" rows="3" placeholder="Formatted Text"></textarea>
+                    </md-input-container>
+                </div>
+
+                <div layout="row">
+                    <md-input-container flex="50">
+                        <label>Button Title</label>
+                        <input ng-model="newDialog.button[0].title" name="buttonTitle" required>
+                        <div ng-messages="createDialogForm.buttonTitle.$error">
+                            <div ng-message="required">Button Title is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex="50">
+                        <label>Button Uri</label>
+                        <input ng-model="newDialog.button[0].openUriAction.uri" name="buttonUri" required>
+                        <div ng-messages="createDialogForm.subtitle.$error">
+                            <div ng-message="required">Button Uri is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+
+                <div layout="row" layout-align="center center">
+                    <md-button type="submit" ng-click="create()" class="md-raised md-primary" aria-label="Submit"
+                               ng-disabled="createDialogForm.$invalid || createDialogForm.$pristine">
+                        Submit
+                    </md-button>
+                    <md-button ng-click="closeDialog()" class="md-accent md-raised" aria-label="Cancel">
+                        Cancel
+                    </md-button>
+                </div>
+            </form>
+
+        </div>
+    </md-dialog-content>
+
+    <!-- CONTENT -->
+
+</md-dialog>
