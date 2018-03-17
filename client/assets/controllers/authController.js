@@ -15,7 +15,7 @@ app.controller('authController', ['$scope', '$rootScope','authFactory', '$locati
                     else {
                         Flash.create('danger', data.errors, 5000, {container: 'registration'});
                     }
-                    $location.url('/');
+                    $location.url('/registration');
                 }
                 else {
                     $location.url('/');

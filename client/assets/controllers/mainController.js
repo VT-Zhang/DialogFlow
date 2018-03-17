@@ -39,7 +39,7 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
                 cardFactory.delete(id, function (data) {
                     console.log(data);
                 });
-                Flash.create('success', "Card record deleted.", 5000, {container: 'login'});
+                Flash.create('success', "Card record deleted.", 5000, {container: 'main'});
                 $route.reload();
             });
         };
