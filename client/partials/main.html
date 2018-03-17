@@ -1,7 +1,7 @@
 <div ng-controller="mainController">
     <div layout="row" layout-align="center" layout-wrap>
         <div layout="column">
-            <h1>Strayer University DialogFlow</h1>
+            <h1>Strayer University DialogFlow Project</h1>
             <div layout="row" layout-align="center">
                 <flash-message name="main"></flash-message>
             </div>
@@ -20,33 +20,32 @@
             </div>
             <br>
             <table>
-                <thead style="background-color: #03A9F4">
-                <th>Title</th>
-                <th>Subtitle</th>
-                <th>Formatted Text</th>
-                <th>Image URL</th>
-                <th>Button Title</th>
-                <th>Button Uri</th>
-                <th>Action</th>
-
+                <thead>
+                    <th width="10%">Title</th>
+                    <th width="10%">Subtitle</th>
+                    <th width="15%">Formatted Text</th>
+                    <th width="10%">Image URL</th>
+                    <th width="5%">Button Title</th>
+                    <th width="20%">Button Uri</th>
+                    <th width="20%">Action</th>
                 </thead>
                 <tbody>
-                <tr ng-repeat="dialog in dialogs">
-                    <td>{{dialog.title}}</td>
-                    <td>{{dialog.subtitle}}</td>
-                    <td>{{dialog.formattedText}}</td>
-                    <td>{{dialog.image.imageUrl}}</td>
-                    <td>{{dialog.buttons[0].title}}</td>
-                    <td>{{dialog.buttons[0].openUriAction.uri}}</td>
-                    <td> {{dialog._id}}
-                        <md-button type="submit" ng-click="updateDialog($event, dialog._id)" class="md-raised md-primary" aria-label="Update">
-                            Update
-                        </md-button>
-                        <md-button type="submit" ng-click="deleteDialog($event, dialog._id)" class="md-raised md-accent" aria-label="Delete">
-                            Delete
-                        </md-button>
-                    </td>
-                </tr>
+                    <tr ng-repeat="dialog in dialogs">
+                        <td>{{dialog.title}}</td>
+                        <td>{{dialog.subtitle}}</td>
+                        <td>{{dialog.formattedText}}</td>
+                        <td>{{dialog.image.imageUrl}}</td>
+                        <td>{{dialog.buttons[0].title}}</td>
+                        <td>{{dialog.buttons[0].openUriAction.uri}}</td>
+                        <td>
+                            <md-button type="submit" ng-click="updateDialog($event, dialog._id)" class="md-raised md-primary" aria-label="Update">
+                                Update
+                            </md-button>
+                            <md-button type="submit" ng-click="deleteDialog($event, dialog._id)" class="md-raised md-accent" aria-label="Delete">
+                                Delete
+                            </md-button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -51,5 +51,18 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
                 targetEvent: ev,
                 clickOutsideToClose: true
             });
+        };
+
+        $scope.updateDialog = function (ev, id) {
+            $mdDialog.show({
+                controller: 'updateDialogController',
+                templateUrl: 'partials/updateDialog.html',
+                parent: angular.element($document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                locals: {
+                    dialogID: id
+                }
+            });
         }
     }]);

@@ -12,8 +12,14 @@ module.exports = function(app){
     app.get('/dialog', function(req, res) {
         dialogs.index(req, res);
     });
+    app.get('/dialog/:id', function(req, res) {
+        dialogs.show(req, res);
+    });
     app.post('/dialog/', function(req, res) {
         dialogs.create(req, res);
+    });
+    app.put('/dialog/:id', function(req, res) {
+        dialogs.update(req, res);
     });
     app.delete('/dialog/:id', function(req, res) {
         dialogs.delete(req, res);

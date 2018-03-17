@@ -15,6 +15,18 @@ module.exports = {
         })
     },
 
+    show: function (req, res) {
+        Dialog.findById(req.param.id, function(err, dialog) {
+            if (err) {
+                console.log(err);
+                res.json(err);
+            }
+            else {
+                res.json(dialog);
+            }
+        })
+    },
+
     create: function (req, res) {
         Dialog.create(req.body, function (err, dialog) {
             if (err) {
@@ -27,9 +39,28 @@ module.exports = {
         });
     },
 
+    update: function (req, res) {
+        Dialog.findById(req.params.id, function (err, dialog) {
+            if (err) {
+                console.log(err);
+                res.json(err);
+            }
+            else {
+                dialog = req.body;
+                dialog.save(function (err, result) {
+                    if (err) {
+                        console.log(err);
+                        res.json(err);
+                    }
+                    else {
+                        res.json(result);
+                    }
+                });
+            }
+        })
+    },
+
     delete: function (req, res) {
-        console.log(req.params);
-        console.log(req.params.id);
         Dialog.findByIdAndRemove(req.params.id, function(err, dialog){
             if (err) {
                 console.log(err);

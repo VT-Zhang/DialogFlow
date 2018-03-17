@@ -14,6 +14,18 @@ app.factory('dialogFactory', ['$http', function ($http) {
             });
     };
 
+    factory.show = function (id, callback) {
+        $http.get('/dialog/' + id)
+            .then(function (returned_data) {
+                if (typeof(callback) === 'function') {
+                    callback(returned_data.data)
+                }
+            })
+            .catch(function (err) {
+                console.log(err)
+            });
+    };
+
     factory.showAll = function (callback) {
         $http.get('/dialog')
             .then(function (returned_data) {
