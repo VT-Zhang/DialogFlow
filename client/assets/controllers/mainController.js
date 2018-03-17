@@ -1,5 +1,5 @@
-app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies', '$mdDialog', 'Flash',
-    function ($scope, $rootScope, $location, $cookies, $mdDialog, Flash) {
+app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies', '$mdDialog', 'Flash', '$document',
+    function ($scope, $rootScope, $location, $cookies, $mdDialog, Flash, $document) {
 
         $scope.dialogs = [
             {
@@ -67,7 +67,7 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
             Flash.create('success', "You have successfully logged out.", 10000, {container: 'login'});
         };
 
-        $scope.delete = function(ev, id) {
+        $scope.deleteDialog = function(ev, id) {
             var confirm = $mdDialog.confirm()
             .title('Are you sure want to delete this instance?')
             .htmlContent('The instance will be deleted permanently.')
@@ -81,5 +81,15 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
                 mainFactory.delete(id);
                 $mdDialog.hide();
             });
+        };
+
+        $scope.createDialog = function (ev) {
+            $mdDialog.show({
+                controller: 'createDialogController',
+                templateUrl: 'partials/createDialog.html',
+                parent: angular.element($document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true
+            });
         }
-    }])
+    }]);

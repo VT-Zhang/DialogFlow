@@ -5,13 +5,15 @@
             <div layout="row" layout-align="center">
                 <flash-message name="main"></flash-message>
             </div>
-
         </div>
 
         <br>
 
         <div layout-align="center" flex="80">
             <div layout="row" layout-align="end">
+                <md-button class="md-raised md-primary" ng-click="createDialog($event)">
+                    Create
+                </md-button>
                 <md-button class="md-raised md-warn" ng-click="logout()">
                     Logout
                 </md-button>
@@ -37,10 +39,10 @@
                     <td>{{dialog.buttons[0].title}}</td>
                     <td>{{dialog.buttons[0].openUriAction.uri}}</td>
                     <td>
-                        <md-button type="submit" ng-click="update(dialog._id)" class="md-raised md-primary" aria-label="Update">
+                        <md-button type="submit" ng-click="updateDialog($event, dialog._id)" class="md-raised md-primary" aria-label="Update">
                             Update
                         </md-button>
-                        <md-button type="submit" ng-click="delete($event, dialog._id)" class="md-raised md-accent" aria-label="Delete">
+                        <md-button type="submit" ng-click="deleteDialog($event, dialog._id)" class="md-raised md-accent" aria-label="Delete">
                             Delete
                         </md-button>
                     </td>

@@ -2,8 +2,6 @@ app.controller('authController', ['$scope', '$rootScope','authFactory', '$locati
     function ($scope, $rootScope, authFactory, $location, $cookies, Flash) {
 
         $scope.newUser = {};
-        $scope.messages = [];
-        $scope.flag = false;
 
         $scope.register = function () {
             authFactory.register($scope.newUser, function (data) {
@@ -40,7 +38,7 @@ app.controller('authController', ['$scope', '$rootScope','authFactory', '$locati
                     $scope.flag = false;
                     $cookies.put('user_id', data._id);
                     $location.url('/main');
-                    Flash.create('success', "Logged successfully.", 5000, {container: 'main'});
+                    Flash.create('success', "Logged in successfully.", 5000, {container: 'main'});
                 }
             });
         };
