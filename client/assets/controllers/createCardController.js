@@ -2,6 +2,20 @@ app.controller('createCardController', ['$scope', '$rootScope','cardFactory', '$
     'Flash', '$mdDialog', '$route',
     function ($scope, $rootScope, cardFactory, $location, Flash, $mdDialog, $route) {
 
+        /**
+         * Use ControllerAs expression, bind controller as vm (view model), declare vm as this.
+         * Bind all the controller class private functions to vm, so that the view html
+         * is able to access these functions.
+         */
+        var vm = this;
+        vm.closeDialog = closeDialog;
+        vm.createCard = createCard;
+        vm.downloadAsFile = downloadAsFile;
+
+        /**
+         * Initialize the newCard instance's JSON structure.
+         * @type {{title: string, subtitle: string, formattedText: string, image: {imageUrl: string}, buttons: *[]}}
+         */
         $scope.newCard = {
             "title": "",
             "subtitle": "",
@@ -17,11 +31,17 @@ app.controller('createCardController', ['$scope', '$rootScope','cardFactory', '$
             }]
         };
 
-        $scope.closeDialog = function () {
+        /**
+         * Function to close the dialog.
+         */
+        function closeDialog() {
             $mdDialog.hide();
-        };
+        }
 
-        $scope.create = function () {
+        /**
+         * Function to create a new card instance.
+         */
+        function createCard() {
             cardFactory.create($scope.newCard, function (data) {
                 console.log(data);
                 if (data.status === 200) {
@@ -30,9 +50,12 @@ app.controller('createCardController', ['$scope', '$rootScope','cardFactory', '$
                     $route.reload();
                 }
             });
-        };
+        }
 
-        $scope.downloadAsFile = function() {
+        /**
+         * Function to download the input as text file in JSON format.
+         */
+        function downloadAsFile() {
             var a = document.createElement("a");
             document.body.appendChild(a);
             var file = new Blob([angular.toJson($scope.newCard, true)], {type: 'text/plain'});

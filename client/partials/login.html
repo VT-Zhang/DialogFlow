@@ -1,4 +1,4 @@
-<div ng-controller="authController">
+<div ng-controller="authController as vm">
     <br>
     <br>
     <br>
@@ -31,11 +31,11 @@
                 </md-input-container>
                 <br>
                 <div layout="row" layout-align="center center">
-                    <md-button type="submit" ng-click="login()" class="md-raised md-primary submit-button" aria-label="LOG IN"
+                    <md-button type="submit" ng-click="vm.login()" class="md-raised md-primary submit-button" aria-label="LOG IN"
                                ng-disabled="loginForm.$invalid || loginForm.$pristine">
                         Sign In
                     </md-button>
-                    <md-button type="submit" ng-click="redirectRegistration()" class="md-raised md-warn submit-button" aria-label="Registration">
+                    <md-button type="submit" ng-click="vm.redirectRegistration()" class="md-raised md-warn submit-button" aria-label="Registration">
                         Registration
                     </md-button>
                 </div>
