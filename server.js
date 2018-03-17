@@ -14,6 +14,6 @@ process.env["root"] = __dirname;
 require("./server/config/mongoose.js");
 require("./server/config/routes.js")(app);
 
-app.listen(2000, function(){
-    console.log("Listening on port 2000.");
-})
+app.listen(5000, function(){
+    console.log("Listening on port 5000.");
+});
