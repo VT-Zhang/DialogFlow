@@ -5,7 +5,8 @@ app.factory('dialogFactory', ['$http', function ($http) {
         $http.post('/dialog', newDialog)
             .then(function (returned_data) {
                 if (typeof(callback) === 'function') {
-                    callback(returned_data.data)
+                    console.log(returned_data);
+                    callback(returned_data);
                 }
             })
             .catch(function (err) {
@@ -13,16 +14,6 @@ app.factory('dialogFactory', ['$http', function ($http) {
             });
     };
 
-    factory.login = function (user, callback) {
-        $http.post('/login', user)
-            .then(function (returned_data) {
-                if (typeof(callback) === 'function') {
-                    callback(returned_data.data)
-                }
-            }).catch(function (err) {
-            console.log(err)
-        });
-    };
 
     return factory;
 }]);

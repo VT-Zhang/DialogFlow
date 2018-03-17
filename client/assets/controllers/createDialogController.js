@@ -1,5 +1,5 @@
-app.controller('createDialogController', ['$scope', '$rootScope','dialogFactory', '$location', 'Flash', '$mdDialog',
-    function ($scope, $rootScope, dialogFactory, $location, Flash, $mdDialog) {
+app.controller('createDialogController', ['$scope', '$rootScope','dialogFactory', '$location', 'Flash', '$mdDialog', '$route',
+    function ($scope, $rootScope, dialogFactory, $location, Flash, $mdDialog, $route) {
 
         $scope.newDialog = {
             "title": "",
@@ -21,7 +21,14 @@ app.controller('createDialogController', ['$scope', '$rootScope','dialogFactory'
         };
 
         $scope.create = function () {
-
+            dialogFactory.create($scope.newDialog, function (data) {
+                console.log(data);
+                if (data.status === 200) {
+                    Flash.create('success', "New instance created.", 5000, {container: 'main'});
+                    $mdDialog.hide();
+                    $route.reload();
+                }
+            });
         }
 
 

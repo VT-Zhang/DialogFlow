@@ -34,8 +34,8 @@
                 <div layout="row">
                     <md-input-container flex="100">
                         <label>Image Url</label>
-                        <input ng-model="newDialog.image.imageUri" name="imageUri" required>
-                        <div ng-messages="createDialogForm.imageUri.$error">
+                        <input ng-model="newDialog.image.imageUrl" name="imageUrl" required>
+                        <div ng-messages="createDialogForm.imageUrl.$error">
                             <div ng-message="required">Image Url is required.</div>
                         </div>
                     </md-input-container>
@@ -50,14 +50,14 @@
                 <div layout="row">
                     <md-input-container flex="50">
                         <label>Button Title</label>
-                        <input ng-model="newDialog.button[0].title" name="buttonTitle" required>
+                        <input ng-model="newDialog.buttons[0].title" name="buttonTitle" required>
                         <div ng-messages="createDialogForm.buttonTitle.$error">
                             <div ng-message="required">Button Title is required.</div>
                         </div>
                     </md-input-container>
                     <md-input-container flex="50">
                         <label>Button Uri</label>
-                        <input ng-model="newDialog.button[0].openUriAction.uri" name="buttonUri" required>
+                        <input ng-model="newDialog.buttons[0].openUriAction.uri" name="buttonUri" required>
                         <div ng-messages="createDialogForm.subtitle.$error">
                             <div ng-message="required">Button Uri is required.</div>
                         </div>

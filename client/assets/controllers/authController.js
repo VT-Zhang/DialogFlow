@@ -9,7 +9,6 @@ app.controller('authController', ['$scope', '$rootScope','authFactory', '$locati
                 if (data.errors) {
                     if (typeof(data.errors) === 'object') {
                         angular.forEach(data.errors, function (v, k) {
-                            // $scope.messages.push(data.errors[k].message);
                             Flash.create('danger', data.errors[k].message, 5000, {container: 'registration'});
                         });
                     }

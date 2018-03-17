@@ -11,7 +11,7 @@ app.factory('mainFactory', ['$http', function ($http) {
         .catch(function (err) {
             console.log(err)
         });
-    }
+    };
 
     return factory;
-}])
+}]);
