@@ -1,62 +1,13 @@
-app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies', '$mdDialog', 'Flash', '$document', 'dialogFactory',
-    function ($scope, $rootScope, $location, $cookies, $mdDialog, Flash, $document, dialogFactory) {
-
-        // $scope.dialogs = [
-        //     {
-        //         "_id": 0,
-        //         "title": "Completing Your JWMI MBA",
-        //         "subtitle": "Earning your JWMI MBA at YOUR pace",
-        //         "formattedText":  "<p>If you begin attendance in {{termStartDesc}},\
-        //                         taking {{pace}} course(s) per quarter, and completing {{attendQtr}} quarters a year,\
-        //                         you could earn your MBA as early as {{termEndDesc}}.</p>",
-        //         "image": {
-        //             "imageUrl": "https://jackwelch.strayer.edu/assets/img/JW-Logo.png"
-        //         },
-        //         "buttons": [{
-        //             "title": "Apply now!",
-        //             "openUriAction": {
-        //                 "uri": "https://jackwelch.strayer.edu/about"
-        //             }
-        //         }]
-        //
-        //     },
-        //     {
-        //         "_id": 1,
-        //         "title": "Completing Your JWMI MBA",
-        //         "subtitle": "Earning your JWMI MBA at YOUR pace",
-        //         "formattedText":  "<p>If you begin attendance in {{termStartDesc}},\
-        //                         taking {{pace}} course(s) per quarter, and completing {{attendQtr}} quarters a year,\
-        //                         you could earn your MBA as early as {{termEndDesc}}.</p>",
-        //         "image": {
-        //             "imageUrl": "https://jackwelch.strayer.edu/assets/img/JW-Logo.png"
-        //         },
-        //         "buttons": [{
-        //             "title": "Apply now!",
-        //             "openUriAction": {
-        //                 "uri": "https://jackwelch.strayer.edu/about"
-        //             }
-        //         }]
-        //     },
-        //     {
-        //         "_id": 2,
-        //         "title": "Completing Your JWMI MBA",
-        //         "subtitle": "Earning your JWMI MBA at YOUR pace",
-        //         "formattedText":  "<p>If you begin attendance in {{termStartDesc}},\
-        //                         taking {{pace}} course(s) per quarter, and completing {{attendQtr}} quarters a year,\
-        //                         you could earn your MBA as early as {{termEndDesc}}.</p>",
-        //         "image": {
-        //             "imageUrl": "https://jackwelch.strayer.edu/assets/img/JW-Logo.png"
-        //         },
-        //         "buttons": [{
-        //             "title": "Apply now!",
-        //             "openUriAction": {
-        //                 "uri": "https://jackwelch.strayer.edu/about"
-        //             }
-        //         }]
-        //     }
-        // ];
+app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies',
+    '$mdDialog', 'Flash', '$document', 'dialogFactory', '$route',
+    function ($scope, $rootScope, $location, $cookies, $mdDialog, Flash, $document,
+              dialogFactory, $route) {
 
         function init () {
+            if(!$cookies.get("user_id")){
+                $location.url("/");
+                Flash.create("danger", "You have not sign in yet, please sign in first.", 5000, {container: "login"});
+            }
             dialogFactory.showAll(function(data) {
                 console.log(data);
                 $scope.dialogs = data.data;
@@ -85,8 +36,9 @@ app.controller('mainController', ['$scope', '$rootScope', '$location', '$cookies
             .multiple(true);
 
             $mdDialog.show(confirm).then(function () {
-                mainFactory.delete(id);
+                dialogFactory.delete(id);
                 $mdDialog.hide();
+                $route.reload();
             });
         };
 

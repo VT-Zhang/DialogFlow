@@ -18,7 +18,7 @@ module.exports = {
                 res.json(user);
             }
             else {
-                res.json({errors: 'Password is not right.'});
+                res.json({errors: 'Password does not match record, please try again.'});
             }
         });
     },

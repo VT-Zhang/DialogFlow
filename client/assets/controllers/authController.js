@@ -32,7 +32,6 @@ app.controller('authController', ['$scope', '$rootScope','authFactory', '$locati
                     $location.url('/');
                 }
                 else {
-                    $scope.flag = false;
                     $cookies.put('user_id', data._id);
                     $location.url('/main');
                     Flash.create('success', "Logged in successfully.", 5000, {container: 'main'});
