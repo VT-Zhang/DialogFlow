@@ -1,4 +1,5 @@
-app.controller('createDialogController', ['$scope', '$rootScope','dialogFactory', '$location', 'Flash', '$mdDialog', '$route',
+app.controller('createDialogController', ['$scope', '$rootScope','dialogFactory', '$location',
+    'Flash', '$mdDialog', '$route',
     function ($scope, $rootScope, dialogFactory, $location, Flash, $mdDialog, $route) {
 
         $scope.newDialog = {
@@ -29,6 +30,15 @@ app.controller('createDialogController', ['$scope', '$rootScope','dialogFactory'
                     $route.reload();
                 }
             });
+        };
+
+        $scope.downloadAsFile = function() {
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+            var file = new Blob([angular.toJson($scope.newDialog, true)], {type: 'text/plain'});
+            a.href = URL.createObjectURL(file);
+            a.download = "json.txt";
+            a.click();
         }
 
     }]);
